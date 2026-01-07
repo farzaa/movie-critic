@@ -15,14 +15,16 @@ export default function MovieCard({ movie }: MovieCardProps) {
 
   // Determine color based on score (0-100)
   const getRatingColor = (score: number) => {
-    if (score >= 80) return "text-green-500";
-    if (score >= 60) return "text-yellow-500";
+    if (score >= 90) return "text-green-500";
+    if (score >= 80) return "text-yellow-500";
+    if (score >= 60) return "text-orange-500";
     return "text-red-500";
   };
 
   const getRatingBg = (score: number) => {
-    if (score >= 80) return "bg-green-500/10 border-green-500/20";
-    if (score >= 60) return "bg-yellow-500/10 border-yellow-500/20";
+    if (score >= 90) return "bg-green-500/10 border-green-500/20";
+    if (score >= 80) return "bg-yellow-500/10 border-yellow-500/20";
+    if (score >= 60) return "bg-orange-500/10 border-orange-500/20";
     return "bg-red-500/10 border-red-500/20";
   };
 
@@ -62,10 +64,12 @@ export default function MovieCard({ movie }: MovieCardProps) {
             alt="AI"
             className="w-5 h-5"
             style={{
-              filter: score >= 80
+              filter: score >= 90
                 ? 'brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(86deg) brightness(118%) contrast(119%)' // green
-                : score >= 60
+                : score >= 80
                 ? 'brightness(0) saturate(100%) invert(88%) sepia(79%) saturate(1352%) hue-rotate(3deg) brightness(104%) contrast(103%)' // yellow
+                : score >= 60
+                ? 'brightness(0) saturate(100%) invert(57%) sepia(98%) saturate(1000%) hue-rotate(360deg) brightness(100%) contrast(105%)' // orange
                 : 'brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%)' // red
             }}
           />
